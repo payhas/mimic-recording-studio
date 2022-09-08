@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import { history } from "react-router-dom";
-import { getName, saveName } from "./api/localstorage";
+import { getName, saveName, createUUID, clearName } from "./api/localstorage";
 
 class Intro extends Component {
   constructor(props) {
@@ -125,6 +125,12 @@ class Intro extends Component {
     return (
       <div>
         <p>Hoş geldiňiz {this.state.name}!</p>
+        <div className="btn-restart">
+          <a href="/" onClick={this.handleRestartBtn}>
+            Täze Ýazyjy Başlat
+          </a>
+        </div>
+        <br/><br/>
         <p>Ýazga dowam etmek üçin, "Ýazga Başla" dügmesine basyň</p>
       </div>
     );
@@ -138,9 +144,17 @@ class Intro extends Component {
     if (this.state.name === undefined) {
       alert("Dowam etmezden ozal, adynyňyzy giriziň!");
     } else {
-	  saveName(this.state.name);
-	  this.props.history.push('/record')
+    saveName(this.state.name);
+    this.props.history.push('/record')
     }
+  };
+
+  handleRestartBtn = e => {
+    createUUID();
+    clearName();
+    this.setState({ name: undefined });
+
+    e.preventDefault();
   };
 }
 
