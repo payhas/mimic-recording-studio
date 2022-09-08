@@ -8,17 +8,17 @@ class Metrics extends Component {
         return (
             <div className="metrics-container">
                 <div className="total-hours">
-                    <h2>PROGRESS</h2>
+                    <h2>Ýetişik</h2>
                     <div>
-                        Phrase: {this.props.promptNum} / {this.props.totalPrompt}
+                        Sözlemler: {this.props.promptNum} / {this.props.totalPrompt}
                     </div>
                     <div>
-                        Time Recorded: {this.secondsToHms(Math.round(this.props.totalTime))}
+                        Ýazgy edilen wagt: {this.secondsToHms(Math.round(this.props.totalTime))}
                     </div>
                 </div>
                 <div className="speech-rate">
-                    <h2>SPEECH RATE</h2>
-                    <div>Overall Average: {charPerSec} characters per second</div>
+                    <h2>Gepleşik</h2>
+                    <div>Ortaça: sekuntda {charPerSec} söz</div>
                 </div>
             </div>
         );

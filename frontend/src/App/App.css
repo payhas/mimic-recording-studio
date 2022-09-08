@@ -28,13 +28,18 @@
   }
 }
 
+@font-face {
+  font-family: Payhas;
+  src: url("assets/Payhas-font.otf") format("opentype");
+}
+
 .page {
   margin-top: 20px;
 }
 
 body {
   text-align: left;
-  font-family: "Roboto";
+  font-family: "Payhas";
   font-size: 16px;
   line-height: 1.5;
   color: #2c3e50;
@@ -92,7 +97,7 @@ hr {
 }
 
 .topnav {
-  height: 64px;
+  height: 98px;
   background-color: #22a7f0;
   color: white;
   font-weight: 400;
@@ -101,6 +106,7 @@ hr {
 }
 
 .logo {
+  height: 68px;
   margin-right: 10px;
   /* margin-top: 10px; */
 }
@@ -110,7 +116,7 @@ hr {
   justify-content: center;
   flex-wrap: wrap;
   position: absolute;
-  top: 64px;
+  top: 98px;
   left: 0;
   right: 0;
   bottom: 0;

@@ -94,12 +94,12 @@ class Recorder extends React.Component {
 
 			navigator.getUserMedia(constraints, onSuccess, onErr)
 		} else {
-			console.warn('Audio recording APIs not supported by this browser');
+			console.warn('Siziň brawzeriňizde ses ýazgysy mümkin däl!');
 			const { onMissingAPIs } = this.props;
 			if (onMissingAPIs) {
 				onMissingAPIs(navigator.getUserMedia, window.MediaRecorder)
 			} else {
-				window.alert('Your browser doesn\'t support native microphone recording. For best results, we recommend using Google Chrome or Mozilla Firefox to use this site.')
+				window.alert('Siziň brawzeriňizde ses ýazgysy mümkin däl. Ýazgy etmek üçin "Google Chrome" brawzerini ulanmagy maslahat berýäris.')
 			}
 		}
 	}

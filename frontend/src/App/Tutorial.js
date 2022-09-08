@@ -10,17 +10,16 @@ class Tutorial extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Tutorial</h1>
+        <h1>Gollanma</h1>
         <div className="tutorial">
-            The Mimic Recording Studio was made to simplify the process of
-            creating your own text to speech corpus. This tutorial will help you
-            get started.
+            "Ses Ýazgy Merkezi" akylly ses kömekçisi üçin niýetlenen
+            ses ýazgylaryny ýygnama prosesini aňsatlaşdyrmak üçin döredilendir.
             <br />
             <br />
             <div>
-            <h2>Recording Box</h2>
+            <h2>Ýazgy bölümi</h2>
             <PhraseBox
-                prompt="The human voice is the most perfect instrument of all."
+                prompt="Akja, çyralary ýak."
                 promptNum={0}
                 audioLen={0}
                 totalCharLen={0}
@@ -33,39 +32,38 @@ class Tutorial extends Component {
                 strokeColor="#FD9E66"
             />
             <p>
-                In the middle, you can see the phrase to record. To start the
-                recording press the &nbsp;
+                Orta arada, ýazgy edilmeli sözlem görkezilendir,
+                ýazga başlamak üçin klawiýaturada &nbsp;
                 <img src={spacebarSVG} className="key-icon" alt="space" /> &nbsp;
-                bar. The recording should automatically stop when it detects
-                silence. To replay the recording press the &nbsp;
+                "Boşluk" knopkasyna basyň. Gürlap bolanyňyzdan soň, ýazgy awtomatiki duruzylar.
+                Edilen ses ýazgysyny diňlemek üçin &nbsp;
                 <img src={PSVG} className="key-icon" alt="p" /> &nbsp;
-                key. You may re-record
-                that same phrase as many times as you like. <b>It is essential that the
-                recorded words match the text in the script exactly. </b> If you
-                accidentally deviate from the script or are unsure, please record
-                the prompt again. Once saved you may not be able to go back. To skip a prompt
-                press <img src={SSVG} className="key-icon" alt="s" /> and the next prompt will
-                be shown. Press the &nbsp;
-                <img src={rightSVG} className="key-icon" alt="->" />&nbsp;
-                key to keep the recording and move on to the next phrase.
+                knopkasyna basyň. Islendik sözlemleri täzeden hem ýazgy edip bilersiňiz.
+                <b>Ýazgy edilen sözleriň, görkezilen tekst bilen gabap gelmegi hökmandyr. </b>
+                Egerde ýazgy edilen sözleriň dogrylygyna doly göwniňiz ýetmese,
+                sözleri hökman täzeden ýazgy ediň. Ýazgy girizilenden soň yzyna gaýtarmak mümkin däldir.
+                Ýazgyny goýbolsun etmek üçin <img src={SSVG} className="key-icon" alt="s" /> knopkasyna basyň,
+                bu sizi indiki sözleme geçirer. Ýazgyny girizmek we indiki sözleme geçmek üçin bolsa &nbsp;
+                <img src={rightSVG} className="key-icon" alt="->" />&nbsp; knopkasyna basyň.
             </p>
           </div>
           <div>
-              <h2>Feedback</h2>
+              <h2>Gürleýiş depgini</h2>
               <p>
-              When recording stops, you may notice a feedback indicator appearing in the top right corner of the Recording Box. This indicator will tell you if you are speaking to fast, to slow, or at a good pace.
+              Ýazga almak bes edilende, ýazgy gutusynyň ýokarky sag burçunda gürleýiş depgini görkezijisini görüp bilersiňiz.
+              Bu görkeziji siziň çalt, haýal ýa-da gowy tizlik bilen gürleýändigiňizi görkezer.
               </p>
               <div className="grid-layout">
-                <div className="feedback-ball-green-t">Good Pace</div>
-                <div className="feedback-ball-red-t">Too Slow</div>
-                <div className="feedback-ball-red-t">Too Fast</div>
+                <div className="feedback-ball-green-t">Durnukly Tizlik</div>
+                <div className="feedback-ball-red-t">Ýuwaş Tizlik</div>
+                <div className="feedback-ball-red-t">Çalt Tizlik</div>
               </div>
-              <p><b>The indicator is determined using your average speech rate. The indicator will only start appearing after 100 recorded samples.
+              <p><b>Görkeziji ortaça gürleýiş tizligiňizi ulanyp kesgitlenýär. Görkeziji diňe 100 ýazylan nusgadan soň peýda bolup başlar.
               </b>
             </p>
           </div>
           <div>
-              <button className="btn" onClick={this.handleClick}>Record</button>
+              <button className="btn" onClick={this.handleClick}>Ýazga Geç</button>
           </div>
         </div>
       </div>
