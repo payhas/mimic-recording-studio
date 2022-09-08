@@ -50,7 +50,7 @@ class Record extends Component {
   render() {
     return (
       <div id="PageRecord">
-        <h1>Mimic Recording Studio</h1>
+        <h1>Ses Ýazgy Merkezi</h1>
         <TopContainer
           userName={this.name}
           route={this.props.history.push}
@@ -81,8 +81,8 @@ class Record extends Component {
         </div>
         <div className="indicator-container">
           {this.state.shouldRecord
-            ? "Read Now [Esc] to cancel"
-            : "[Spacebar] to Start Recording [R] to review [S] to skip [->] for next"}
+            ? "Ýazgyny okaň, duruzmak üçin [Esc]"
+            : "[Boşluk] Ýazga başlamak üçin [R] Ýazgyny diňlemek üçin [S] Geçmek üçin [->] Indiki üçin"}
         </div>
         <div id="controls">
           <a
@@ -99,7 +99,7 @@ class Record extends Component {
             onClick={this.state.shouldRecord ? () => null : this.state.play ? () => null : this.playWav}
           >
             <i className="fas fa-play ibutton" />
-            Review
+            Diňle
           </a>
           <a
             id="btn_Next"
@@ -115,7 +115,7 @@ class Record extends Component {
             onClick={this.state.shouldRecord ? () => null : this.state.play ? () => null : this.onNext}
           >
             <i className="fas fa-forward ibutton-next" />
-            Next
+            Indiki
           </a>
         </div>
       </div>
@@ -135,7 +135,7 @@ class Record extends Component {
         if (res.data.prompt === "___CORPUS_END___") {
             this.setState({
               shouldRecord: false,
-              prompt: "*no more phrases in corpus to record*",
+              prompt: "*başga ýazgy galmady*",
               totalPrompt: res.data.total_prompt
             })
           }
@@ -170,11 +170,11 @@ class Record extends Component {
                   this.setState({ userCreated: true });
                   this.requestPrompts(this.uuid);
                 } else {
-                  alert("sorry there is in error creating user");
+                  alert("ulanyjy döredilýärkä säwlik ýüze çykdy");
                 }
               });
           } else {
-            alert("sorry there is in error creating user");
+            alert("ulanyjy döredilýärkä säwlik ýüze çykdy");
           }
         }
       });
@@ -288,7 +288,7 @@ class Record extends Component {
               audioLen: 0
             });
           } else {
-            alert("There was an error in saving that audio");
+            alert("Ýazgy girizilýärkä säwlik ýüze çykdy");
           }
         })
         .catch(err => console.log(err));
@@ -309,7 +309,7 @@ class Record extends Component {
           audioLen: 0
         });
       } else {
-        alert("There was an error in saving that audio");
+        alert("Ýazgy girizilýärkä säwlik ýüze çykdy");
       }
     })
     .catch(err => console.log(err));
@@ -341,30 +341,27 @@ class TopContainer extends Component {
         <div className="top-container-info">
           <div className="instructions2">
             <i className="fas fa-info-circle" />
-            <h2>HINTS</h2>
+            <h2>Ýatlatma:</h2>
             <ul className="hints">
               <li>
-                <img src={spacebarSVG} className="key-icon" alt="space" /> will
-                start recording
+                <img src={spacebarSVG} className="key-icon" alt="space" /> Ýazgyny başladýar
               </li>
-              <li>Recording will auto-stop after you speak</li>
+              <li>Gürläp bolanyňyzdan soň ýazgy awtomat duruzylar</li>
               <li>
-                <img src={PSVG} className="key-icon" alt="p" /> will play
-                recorded audio
+                <img src={PSVG} className="key-icon" alt="p" /> Ýazgyny diňleder
               </li>
               <li>
-                <img src={rightSVG} className="key-icon" alt="->" /> will go to
-                next prompt
+                <img src={rightSVG} className="key-icon" alt="->" /> Indiki ýazga geçer
               </li>
               <li>
-                <img src={SSVG} className="key-icon" alt="->" /> skip current prompt
+                <img src={SSVG} className="key-icon" alt="->" /> Şu wagtky ýazgyny goýbolsun edip, indiki ýazga geçer
               </li>
             </ul>
           </div>
           <div className="session-info">
             <div className="top-info">
               <div>
-                <h2>RECORDER</h2>
+                <h2>Ýazyjy</h2>
                 &nbsp;
                 <span id="sessionName">{this.props.userName}</span>
               </div>
@@ -372,20 +369,20 @@ class TopContainer extends Component {
             </div>
             <hr />
             <p>
-              It is very important that the recorded words{" "}
+              Ýazgy edilen sözleriň {" "}
               <span className="highlight">
-                match the text in the script exactly
+                görkezilen tekst bilen gabap gelmegi hökmandyr
               </span>
-              . If you accidentally deviate from the script or are unsure,
-              please record the prompt again.
+              . Egerde ýazgy edilen sözleriň dogrylygyna doly göwniňiz ýetmese,
+              sözleri hökman täzeden ýazgy ediň.
             </p>
           </div>
         </div>
         <button className="btn info-btn" onClick={this.handleClick}>
-          Tutorial
+          Gollanma
         </button>
         <button className="btn info-btn" onClick={this.props.dismiss}>
-          Continue
+          Dowam Et
         </button>
       </div>
     );

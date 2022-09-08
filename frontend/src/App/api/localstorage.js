@@ -14,6 +14,10 @@ export const saveName = (name) => {
     storage.setItem('name', name)
 }
 
+export const clearName = () => {
+    storage.removeItem('name')
+}
+
 export const getName = () => {
     return storage.getItem('name')
 }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import { history } from "react-router-dom";
-import { getName, saveName } from "./api/localstorage";
+import { getName, saveName, createUUID, clearName } from "./api/localstorage";
 
 class Intro extends Component {
   constructor(props) {
@@ -22,84 +22,74 @@ class Intro extends Component {
     return (
       <div className="page-intro">
         <div id="PageIntro">
-          <h2 style={{ color: "#FD9E66" }}>Mimic Recording Studio</h2>
-          <h1>Help us build the voice(s) of Mycroft!</h1>
+          <h2 style={{ color: "#FD9E66" }}>Ses Ýazgy Merkezi</h2>
+          <h1>Geliň "AKJA" ses kömekçisini bilelikde döredeliň!</h1>
           <p>
-            Mycroft's open source Mimic technologies are Text-to-Speech engines,
-            which take a piece of written text and convert it into spoken audio.
-            The latest generation of this technology uses machine learning
-            techniques to create a model, which can speak a specific language,
-            sounding like the voice on which it was trained.
+            "AKJA" öý we ofis otaglarynda ulanmak üçin niýetlenen, ses kömekçisi bolup,
+            onuň üsti bilen akylly enjamlary dolandyryp bolar.
           </p>
           <p>
-            The Mimic Recording Studio simplifies the collection of training data from
-            individuals, each of which can be used to produce a distinct voice
-            for Mimic.
+            "Ses Ýazgy Merkezi" bolsa, programmanyň adam sesine düşünmek üçin gerekli bolan
+            ses ýazgylaryny ýygnamak üçin niýetlenendir.
           </p>
 
           <div className="instructions">
             <i className="fas fa-book-open" />
-            <h2>guide</h2>
+            <h2>gollanma</h2>
             <p>
-              Mimic II preserves the rhythm, tone and pronunciation from source
-              recordings. As a result, it is important for all recordings to use
-              a consistent voice for the personality of the final product.
+              AKJA, ses ýazgylaryndan ritmi, äheňi we aýdylyşy saklaýar.
+              Netijede, ähli ýazgylarda, soňky önümiň şahsyýeti üçin durnukly ses ulanmak möhümdir.
             </p>
 
             <p>
-              To help with this, adopt the assistant persona for all recordings:
+              Bu meselede şu bellikler göz öňünde tutlmaly:
             </p>
 
             <ul className="persona-desc">
               <li>
                 <span className="li-title">
-                  The assistant is knowledgeable and confident, yet humble.
+                  Kömekçi bilimli we ynamly, ýöne kiçigöwünlidir.
                 </span>
-                <br /> The assistant has access to all the world's information,
-                but is aware of his or her own limitations, and doesn't mind
-                being corrected.
+                <br /> Kömekçi üçin dünýäniň ähli maglumatlary elýeter,
+                  ýöne şeýlede bolsa özüniň çäklidigini bilýär we düzedilmegine garşy däl.
               </li>
               <li>
                 <span className="li-title">
-                  The assistant loves knowledge and enjoys sharing information
-                  with others.
+                  Kömekçi bilimleri gowy görýär we beýlekiler bilen maglumat paýlaşmagy gowy görýär.
                 </span>
-                <br /> This enjoyment can be clearly heard in the energy and
-                enthusiasm in his or her voice.
+                <br /> Bu lezzet, sesindäki güýç we joşgun bilen aýdyň eşidilýär.
               </li>
               <li>
                 <span className="li-title">
-                  The assistant is persistent, optimistic and upbeat.
+                  Kömekçi tutanýerli, optimistik we göwünjeň.
                 </span>
-                <br /> Even if there are errors or misunderstandings, the tone
-                should be positive, without any sign of frustration.
+                <br /> Ýalňyşlyklar ýa-da düşünişmezlikler bolan ýagdaýynda hem,
+                  göwnüçökgünlik alamaty bolmazdan, kömekçi sesi oňyn bolmaly.
               </li>
               <li>
                 <span className="li-title">
-                  The assistant is professional without being stiff or overly
-                  formal.
+                  Kömekçi gaty ýa-da aşa resmi bolmaly däl.
                 </span>
-                <br /> The assistant speaks with an efficient, yet unrushed
-                pace, similar to what you might hear from a news anchor.
+                <br /> Kömekçi, habarlar labyryndan eşidip boljak ýaly täsirli,
+                  ýöne gyssagly bolmadyk depginde bilen gürleýär.
               </li>
             </ul>
 
             <hr></hr>
             <p>
-              In addition please follow these advices for your voice recordings:
+              Mundan başga-da, ses ýazgylaryňyz üçin bu maslahatlary ýerine ýetiriň:
             </p>
             <ul className="persona-desc">
-              <li><b>Use a good microphone and a quiet recording room setup</b> (no computers fans, air conditioning, ...).</li>
-              <li>Use a text corpus with cleaned numbers/abbreviations and good phoneme coverage.</li>
-              <li>Read neutral, but with a natural speech flow and do not swallow up letters.</li>
-              <li>Adjust tone and pitch with punctuations.</li>
-              <li>Use a constant recording speed.</li>
-              <li>Check your recordings regularly in high volume for background noise.</li>
-              <li>Make breaks regualarly and do not record more than four hours a day.</li>
-              <li>Record error free.</li>
+              <li><b>Ýokary hilli mikrofon ulanyň we asuda ýazgy otagyny gurnaň</b></li>
+              <li>Tebigy gürleýiş akymy bilen okaň we harplary ýuwutmaň.</li>
+              <li>Dyngy belgiler bilen äheňi sazlaň.</li>
+              <li>Durnukly ýazgy tizligini ulanyň.</li>
+              <li>Fon sesleri üçin ýazgylaryňyzy ýokary ses bilen yzygiderli barlap duruň.</li>
+              <li>Yzygiderli arakesme ediň we günde dört sagatdan köp ýazmaň.</li>
+              <li>Ýalňyşlyksyz ýazgy ediň.</li>
               </ul>
 
-              <span className="li-title">Happy recording :-)</span>
+              <span className="li-title">Üstünlikli ýazgylar :-)</span>
 
           </div>
           {getName() ? this.renderWelcomeBackMsg() : this.renderInput()}
@@ -109,7 +99,7 @@ class Intro extends Component {
               className="btn"
               onClick={this.handleTrainMimicBtn}
             >
-            Record
+            Ýazga Başla
             </button>
           </div>
         </div>
@@ -120,11 +110,11 @@ class Intro extends Component {
   renderInput = () => {
     return (
       <div>
-        <p>To get started, enter your name and hit the Record button.</p>
+        <p>Başlmak üçin adynyňyzy giriziň we "Ýazga Başla" dügmesine basyň.</p>
         <input
           type="text"
           id="yourname"
-          placeholder="Your Name"
+          placeholder="Adyňyz"
           onChange={this.handleInput}
         />
       </div>
@@ -134,8 +124,14 @@ class Intro extends Component {
   renderWelcomeBackMsg = () => {
     return (
       <div>
-        <p>Welcome back {this.state.name}!</p>
-        <p>Hit Train Mimic to continue recording</p>
+        <p>Hoş geldiňiz {this.state.name}!</p>
+        <div className="btn-restart">
+          <a href="/" onClick={this.handleRestartBtn}>
+            Täze Ýazyjy Başlat
+          </a>
+        </div>
+        <br/><br/>
+        <p>Ýazga dowam etmek üçin, "Ýazga Başla" dügmesine basyň</p>
       </div>
     );
   };
@@ -146,11 +142,19 @@ class Intro extends Component {
 
   handleTrainMimicBtn = () => {
     if (this.state.name === undefined) {
-      alert("Please input a name before proceeding!");
+      alert("Dowam etmezden ozal, adynyňyzy giriziň!");
     } else {
-	  saveName(this.state.name);
-	  this.props.history.push('/record')
+    saveName(this.state.name);
+    this.props.history.push('/record')
     }
+  };
+
+  handleRestartBtn = e => {
+    createUUID();
+    clearName();
+    this.setState({ name: undefined });
+
+    e.preventDefault();
   };
 }
 
