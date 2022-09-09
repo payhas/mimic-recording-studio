@@ -1,4 +1,4 @@
-const apiRoot = "http://localhost:5000/";
+const apiRoot = process.env.REACT_APP_API_URL;
 
 export const postAudio = (audio, prompt, uuid) => {
     return fetch(apiRoot + `api/audio/?uuid=${uuid}&prompt=${prompt}`, {
